@@ -1,0 +1,2 @@
+fails = botPricesArg()
+print(fails)
