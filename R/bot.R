@@ -4,7 +4,7 @@ library(logr)
 tmp = file.path('/tmp/',"test.log")
 
 lf = log_open(tmp)
-bot = Bot(token = bot_token("jmtTestBot"))
+#bot = Bot(token = bot_token("jmtTestBot"))
 #print(bot$getMe())
 
 updates = bot$getUpdates()
