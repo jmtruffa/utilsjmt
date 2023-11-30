@@ -1,6 +1,18 @@
 #' botPricesArg
 #'
-#' Función que trae los precios de Argentina
+#' Función que trae los precios de Argentina. Devuelve los
+#' tickers que hayan fallado y para lo que tiene que devolver
+#' lo hace en '/tmp/pricesArg.xlsx' que permite que en cualquier
+#' máquina con SO tipo linux lo pueda hacer.
+#'
+#' Ya se encuentra modificada para trabajar con la db Postgres
+#' No tiene parámetros
+#'
+#' @examples
+#' fails = botPricesArg()
+#'
+#'
+#'
 botPricesArg = function() {
   require(tidyverse)
   #require(methodsPPI)
@@ -18,7 +30,7 @@ botPricesArg = function() {
     ### traigo todos los tickers que pertenecen al proceso totalReturn
     ### usando la función methodsPPI::sets
     con = helperPostgres::dbConnectP()
-    tickers = dbGetTable(table = "sets") %>%
+    tickers = helperPostgres::dbGetTable(table = "sets") %>%
       filter(nombre == "pricesArg") %>%
       select(nombre, ticker, type)
 
